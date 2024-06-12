@@ -40,13 +40,13 @@ export class RegisterComponent implements OnInit {
     this.auth.register(this.registerForm.value).subscribe({
       next: res => {
         this.router.navigate(['/login']);
-        this.toast.showToast('Account created', '', 'success');
+        this.toast.showToast('¡Cuenta creada!', '', 'success');
       },
       error: res => {
         if(res.error.message.indexOf('That username has been taken') !== -1){
-          this.toast.showToast('Username taken', '', 'error');
+          this.toast.showToast('Este usuario ya existe', '', 'error');
         } else if(res.error.message.indexOf('email') !== -1){
-          this.toast.showToast('Email is associated with an existing account', '', 'error')
+          this.toast.showToast('Este email ya existe', '', 'error')
         }
       }
     });

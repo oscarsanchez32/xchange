@@ -75,11 +75,11 @@ export class GameDetailComponent implements OnInit {
     this.cartService.addToCart({ gameId: this.currentRoute.snapshot.paramMap.get('id') }).subscribe({
       next: res => {
         this.cartService.cartUpdated.next(true);
-        this.toast.showToast('Item added', 'Item added to cart', 'success');
+        this.toast.showToast('Juego añadido', 'Jueego añadido al carrito', 'success');
       },
       error: (error: HttpErrorResponse) => {
         if (error.error.message.indexOf('Item is already in cart') !== -1) this.toast.showToast('Error', 'El juego ya está en el carrito', 'error');
-        else this.toast.showToast('Error', 'Error adding to cart', 'error');
+        else this.toast.showToast('Error', 'Ya tienes este producto en el carrito', 'error');
       }
     });
   }

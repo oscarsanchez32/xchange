@@ -13,6 +13,7 @@
                     <span *ngIf="isLoadingRandomData" class="spinner-border spinner-border-sm ms-2 mt-2" role="status" aria-hidden="true"></span>
                 </div> -->
                 <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="p-4 ps-3 pe-3 p-sm-5 pt-sm-2 pb-sm-4 ">
+                    <br>
                     <h4 class="fw-normal text-center text-custom-orange pb-4">Registro</h4>
                     <div class="col-12">
                         <label class="form-label mb-0"><small class="fw-bold text-muted">Nombre</small></label>
@@ -46,5 +47,7 @@
             </div>
         </div>
     </div>
-    
+    <div class="text-center pt-5">
+        <div class="text-white">XCHANGE v0.1</div>
+    </div>
 </div>

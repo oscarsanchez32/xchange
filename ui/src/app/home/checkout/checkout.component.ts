@@ -120,7 +120,7 @@ export class CheckoutComponent implements OnInit {
         this.promo = res;
         this.total -= this.promo.amount;
         if(this.total < 0) this.total = 0;
-        this.toast.showToast('Promo applied', this.promo.code+': '+this.promo.amount+'$ off', 'success');
+        this.toast.showToast('Descuento aplicado', this.promo.code+': '+this.promo.amount+'$ off', 'success');
       },
       error: res => {
         this.isLoadingPromo = false;
@@ -155,19 +155,19 @@ export class CheckoutComponent implements OnInit {
     switch (this.form.get('paymentMode')?.value) {
       case 'store-credit':
         if(this.total > this.userCredit) {
-          this.toast.showToast('Insufficient credits', 'You do not have enough credits', 'info');
+          this.toast.showToast('Créditos insuficientes', 'No tienes suficientes créditos', 'info');
           return;
         }
         this.paymentService.processPayment(orderItems, this.promoApplied ? this.promo.code : "", PaymentType.COINS)
           .subscribe({
             next: res => {
               this.router.navigate(['/games/list'], {queryParams: {orderSuccess: ''}});
-              this.toast.showToast('Order created', 'Item(s) has been added', 'success');
+              this.toast.showToast('Order creada', 'Los items han sido agregados', 'success');
             },
             error: res => {
               console.error(res);
               this.router.navigate(['/games/list'], {queryParams: {orderFailure: ''}});
-              this.toast.showToast('Error', 'Could not create order', 'error');
+              this.toast.showToast('Error', 'No se pudo crear la orden', 'error');
             }
           });
         break;

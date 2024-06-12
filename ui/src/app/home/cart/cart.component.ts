@@ -32,11 +32,11 @@ export class CartComponent implements OnInit {
     this.cartService.removeFromCart(id).subscribe({
       next: res => {
         this.ngOnInit();
-        this.toast.showToast('Item removed', 'Item removed from cart', 'success');
+        this.toast.showToast('Juego eliminado', 'Juego eliminado del carrito', 'success');
         this.cartService.cartUpdated.next(true);
       },
       error: res => {
-        this.toast.showToast('Error', 'Could not remove item from cart', 'error');
+        this.toast.showToast('Error', 'No se pudo eliminar del carrito', 'error');
       }
     });
   }

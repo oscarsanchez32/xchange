@@ -100,13 +100,13 @@ export class ReviewsComponent implements OnInit {
         this.isSavingReview = false;
         this.isAddingReview = false;
         this.ngOnInit();
-        this.toast.showToast('Review created', 'Your review has been created', 'success');
+        this.toast.showToast('Reseña creada', 'Tu reseña fue creada', 'success');
       },
       error: (error: HttpErrorResponse) => {
         this.isSavingReview = false;
         this.isErrorSavingReview = true;
         this.errorCode = error.status;
-        this.toast.showToast('Error', 'Cannot submit review', 'error');
+        this.toast.showToast('Error', 'No se pudo guardar la reseña', 'error');
       }
     });
   }
@@ -131,7 +131,7 @@ export class ReviewsComponent implements OnInit {
     this.reviewService.deleteReview(reviewId, gameId).subscribe({
       next: res => {
         this.ngOnInit();
-        this.toast.showToast('Review deleted', 'Your review has been deleted', 'success');
+        this.toast.showToast('Reseña eliminada', 'Tu reseña fue eliminada', 'success');
       }
     });
   }

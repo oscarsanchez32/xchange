@@ -81,12 +81,12 @@ export class ExchangeComponent implements OnInit {
       next: res => {
         this.isLoading = false;
         this.onCloseModal();
-        this.toast.showToast('Exchange created', 'Your exchange has been created', 'success');
+        this.toast.showToast('Intercambio creado', 'Tu intercambio ha sido creado', 'success');
         this.getAllOpenExchanges();
       },
       error: (res:HttpErrorResponse) => {
         this.isLoading = false;
-        this.toast.showToast('Error', 'Could not create exchange', 'error');
+        this.toast.showToast('Error', 'No se pudo crear el intercambio', 'error');
       }
     });
   }
@@ -97,11 +97,11 @@ export class ExchangeComponent implements OnInit {
       next: res => {
         this.isLoading = false;
         this.getAllOpenExchanges();
-        this.toast.showToast('Success', 'Exchange request cancelled', 'success');
+        this.toast.showToast('Success', 'Petición de intercambio cancelada', 'success');
       },
       error: res => {
         this.isLoading = false;
-        this.toast.showToast('Error', 'Could not cancel', 'error');
+        this.toast.showToast('Error', 'No se pudo cancelar', 'error');
       }
     });
   }

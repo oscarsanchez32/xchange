@@ -68,7 +68,7 @@ export class EditProfileComponent implements OnInit {
         this.isLoading = false;
         this.userService.userUpdated.next(true);
 
-        this.toast.showToast('Profile updated', 'Your profile has been updated', 'success');
+        this.toast.showToast('Perfil actualizado', 'Tu perfil ha sido actualizado', 'success');
 
         if(this.updateUserParams.username){
           this.auth.logout();
@@ -78,8 +78,8 @@ export class EditProfileComponent implements OnInit {
       },
       error: res => {
         this.isLoading = false;
-        if(res.error.message === 'This username is taken') this.toast.showToast('Error', 'Username is taken', 'error');
-        else this.toast.showToast('Error', 'Error updating profile', 'error');
+        if(res.error.message === 'This username is taken') this.toast.showToast('Error', 'Este usuario ya existe', 'error');
+        else this.toast.showToast('Error', 'Error al actualizar', 'error');
       }
     });
   }

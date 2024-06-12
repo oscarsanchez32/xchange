@@ -8,7 +8,7 @@
           <li *ngFor="let cartItem of cart" class="list-group-item">
             <div class="d-flex">
               <h6 class="p-0 m-0">{{cartItem.title}}</h6>
-              <h6 class="m-0 ms-auto fw-light">{{cartItem.price | currency}}</h6>
+              <h6 class="m-0 ms-auto fw-light">{{cartItem.price | currency: 'EUR'}}</h6>
             </div>
             <small class="text-muted">{{cartItem.developera}}</small>
           </li>
