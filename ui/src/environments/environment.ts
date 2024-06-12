@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // baseUrl: 'http://ec2-3-89-98-240.compute-1.amazonaws.com/api' //ec2-instance
-  baseUrl: 'http://192.168.22.166:8081/api' //local
+  baseUrl: 'http://192.168.1.167:8081/api' //local
 };
 
 /*
