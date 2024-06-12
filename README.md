@@ -1,34 +1,40 @@
 XCHANGE
-Web para comprar e intercambiar juegos, creada con Spring Boot y Angular.
+XCHANGE es una plataforma web para comprar e intercambiar juegos, creada con Spring Boot y Angular.
 
-Pasos para iniciar la aplicación:
-
-Clonar el repositorio
+Pasos para Iniciar la Aplicación
+1. Clonar el Repositorio
+bash
+Copiar código
 git clone https://github.com/oscarsanchez32/xchange.git
-
-Crear la base de datos MYSQL con el comando: "create database xchange;"
-
-Lanzar el back de spring, estará ejecutándose en el puerto 8081
-
-Para el front con angular, desplazarse al directorio "/ui"
-Ejecutar el comando "npm install"
-Tras esto, ejecutar "ng s -o"
-Se abrirá el navegador en el puerto 4200.
-
-
-En usuario puede:
-
+2. Configurar la Base de Datos
+Crear la base de datos MySQL con el siguiente comando:
+sql
+Copiar código
+create database xchange;
+Inyectar el script que se encuentra en /api/script.sql.
+3. Iniciar el Backend
+Navegar al directorio del backend.
+Lanzar la aplicación Spring Boot, que se ejecutará en el puerto 8081.
+4. Iniciar el Frontend
+Navegar al directorio /ui.
+Ejecutar el comando:
+bash
+Copiar código
+npm install
+Iniciar el servidor Angular con:
+bash
+Copiar código
+ng serve -o
+Esto abrirá el navegador en el puerto 4200.
+Funcionalidades
+Usuario
 Ver, comprar y agregar juegos a su carrito.
-Cree solicitudes de intercambio de juegos que deseen, a cambio de un juego de su propiedad.
+Crear solicitudes de intercambio de juegos, ofreciendo uno de sus propios juegos a cambio.
+Administrador
+Gestionar los juegos presentes en la aplicación, realizando diversas operaciones sobre ellos.
+Intercambios
+Los usuarios tienen la posibilidad de intercambiar juegos con otros usuarios.
 
-Un administrador puede...
-
-Administre los juegos presentes en la aplicación y realice diversas operaciones sobre ellos.
-
-Intercambio
-Los usuarios tienen la posibilidad de intercambiar juegos con otros usuarios. 
-Un usuario puede navegar a la página de Intercambios para ver el tablero de intercambio.
-
-pagina de intercambios
-
+Navegar a la página de Intercambios para ver el tablero de intercambio.
+Página de Intercambios
 Aquí, un usuario puede aceptar una solicitud de intercambio existente (realizada por otro usuario) o crear su propia solicitud de intercambio.
