@@ -1,0 +1,22 @@
+<ul class="list-group text-start">
+    <a [routerLink]="['/user', currentLoggedInUsername, 'my-reviews']" routerLinkActive="active active-custom" class="list-group-item list-group-item-action">
+        <i class="bi bi-pen me-1"></i>
+        Mis reseñas
+    </a>
+    <a *ngIf="currentLoggedInUsername === currentUrlUsername" [routerLink]="['/user', currentLoggedInUsername, 'owned-games']" routerLinkActive="active active-custom" class="list-group-item list-group-item-action">
+        <i class="bi bi-journal-arrow-down me-1"></i>
+        Juegos que te pertenecen
+    </a>
+    <a *ngIf="currentLoggedInUsername === currentUrlUsername" [routerLink]="['/user', currentLoggedInUsername, 'edit-profile']" routerLinkActive="active active-custom" class="list-group-item list-group-item-action">
+        <i class="bi bi-pencil-square me-1"></i>
+        Editar perfil
+    </a>
+    <a *ngIf="currentLoggedInUsername === currentUrlUsername" [routerLink]="['/user', currentLoggedInUsername, 'my-orders']" routerLinkActive="active active-custom" class="list-group-item list-group-item-action">
+        <i class="bi bi-box-seam me-1"></i>
+        Pedidos
+    </a>
+    <a *ngIf="currentLoggedInUsername === currentUrlUsername" [routerLink]="['/user', currentLoggedInUsername, 'exchanges']" routerLinkActive="active active-custom" class="list-group-item list-group-item-action">
+        <i class="bi bi-arrow-left-right me-1"></i>
+        Intercambios
+    </a>
+</ul>

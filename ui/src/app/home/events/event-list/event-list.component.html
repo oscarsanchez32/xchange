@@ -1,0 +1,92 @@
+<!-- <app-loader *ngIf="isLoading"></app-loader>
+<app-book-form *ngIf="isAdding" [editMode]="false" (modalClose)="onCloseModal()"></app-book-form>
+<section class="p-0 pt-3 p-sm-5 text-center text-md-start">
+    <div class="container" id="book-container" *ngIf="!isError && !isLoading">
+        <div>
+            <form (ngSubmit)="onSearchSubmit(searchForm)" #searchForm="ngForm">
+                <div class="d-flex col-lg-4 col-md-6 col-sm-8 col-12 ms-auto mb-2">
+                    <input name="search" type="text" ngModel id="search" class="form-control form-control-custom-orange" placeholder="Search">
+                    <button type="submit" class="btn btn-sm btn-custom-orange  ms-2 d-flex justify-content-center">
+                        <i class="bi bi-search text-secondary text-white fs-5 mx-1"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item bg-light">
+                <h4 class="p-0 text-start m-0">All</h4>
+            </li>
+            <li *ngFor="let book of books" class="list-group-item p-2">
+                <div class="d-sm-flex justify-content-between">
+                    <div class="d-sm-flex">
+                        <div class="align-self-center">
+                            <img [src]="book.imgPath" class="img-thumbnail" style="max-height: 200px;max-width: 150px;min-height: 150px;min-width: 100px;">
+                        </div>
+                        <div class="col ps-0 px-sm-3">
+                            <h5 class="m-0">
+                                <span>{{ book.title }} </span>
+                                <span class="fst-italic fw-light">by <span>{{ book.author }}</span></span>
+                            </h5>
+                            <div class="d-sm-flex pt-1">
+                                <div class="d-flex justify-content-center">
+                                    <h6 class="text-warning align-self-center">
+                                        <div class="col d-flex" *ngIf="book.reviewCount !== 0">
+                                            <small class="d-flex" style="padding: 0px 2px;" *ngFor="let item of [].constructor(book.avgReviews); let i = index" class="text-warning">
+                                                <i class="bi bi-star-fill"></i>
+                                            </small>
+                                            <small class="d-flex" style="padding: 0px 2px;" *ngFor="let item of [].constructor(5 - book.avgReviews); let i = index" class="text-warning">
+                                                <i class="bi bi-star"></i>
+                                            </small>
+                                        </div>
+                                    </h6>
+                                    <h6 class="ms-2 text-muted"><span>{{ book.reviewCount }}</span> reviews</h6>
+                                </div>
+                                <h6 class="ms-0 ms-sm-3 text-success"><i class="bi bi-clipboard2-check-fill me-1"></i><span>{{book.timesPurchased}}</span> sold</h6>
+                            </div>
+                            <p class="m-0 text-muted d-none d-sm-block" align="justify" th:text="${book.shortDesc}">
+                                {{ book.shortDesc }}
+                            </p>
+                            <div class="pt-4 d-none d-sm-block">
+                                <span *ngFor="let tag of book?.tags?.split(',')" class="badge bg-custom-orange rounded-pill m-1">
+                                    <a class="text-decoration-none text-light" href="">{{ tag }}</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="fw-bold">{{ book.price | currency}}</h5>
+                        <div class="pt-3">
+                            <a *ngIf="!book.productPurchased" class="btn btn-custom-orange" [routerLink]="['/checkout']" [queryParams]="{type: 'instant-checkout', id: book.id}"><strong>Buy Now</strong></a>
+                            <button *ngIf="book.productPurchased" class="btn btn-success" disabled><strong>Purchased</strong></button>
+                            <a class="btn btn-outline-secondary ms-1" [routerLink]="['/books', book.id]"><strong>Details</strong></a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="pb-3">
+            <div *ngIf="loggedIn && currentUser.roles?.indexOf('ROLE_ADMIN') !== -1" class="bg-white col p-5 mt-3 text-center" style="border: dashed; border-width: thin; border-color: darkgray; border-radius: 3px;">
+                <h4>
+                    <a class="text-muted text-decoration-none p-5 mb-3" (click)="onOpenModal()" style="cursor: pointer;">+ Add a book</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <nav class="pt-3" *ngIf="!isError">
+        <ul class="pagination justify-content-center">
+            <li (click)="previousPage()" class="page-item" [ngClass]="{'disabled': currentPage === 1}" style="cursor: pointer;">
+                <a class="page-link">Previous</a>
+            </li>
+            <li (click)="selectPage(i+1)" *ngFor="let item of [].constructor(totalPages); let i = index" style="cursor: pointer;" class="page-item" [ngClass]="{'page-item active': currentPage === i+1}">
+                <a class="page-link">{{i+1}}</a>
+            </li>
+            <li (click)="nextPage()" class="page-item" style="cursor: pointer;" [ngClass]="{'disabled': isLast}">
+                <a class="page-link">Next</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="text-center">
+        <small class="text-muted">{{'Total results: ' + totalResults}}</small>
+    </div>
+</section>
+<app-error class="p-0 pt-3 p-sm-5" *ngIf="isError"></app-error> -->

@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-center">
+    <div class="text-center col-12 col-md-5 p-5 my-5 bg-white border rounded-3" id="card">
+        <app-loader *ngIf="isLoading"></app-loader>
+        <div *ngIf="!isLoading">
+            <img src="assets/credit-card.png" width="195">
+            <h4>Pago exitoso</h4>
+            <div class="text-muted">Se han añadido artículos a tu perfil</div>
+            <button class="btn btn-success mt-3" [routerLink]="['/user', authService.getCurrentLoggedInUsername(), 'my-orders']">Ver pedido</button>
+        </div>
+    </div>
+</div>

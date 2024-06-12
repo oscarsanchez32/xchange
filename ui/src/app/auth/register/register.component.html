@@ -1,0 +1,50 @@
+<div class="bg-custom-blue" id="register-bs">
+
+
+    <div class="container">
+        <div class="pt-2"></div>
+        <div class="py-5 d-sm-flex flex-column justify-content-center align-items-center">
+            <div class="text-center">
+                <h3 class="text-white mb-5"><strong>XCHANGE</strong></h3>
+            </div>
+            <div class="bg-white col-xl-4 col-lg-5 col-md-7 col-sm-9" style="box-shadow: 0 0 25px 0 #a0331b; border-radius: 0.5rem;">
+                <!-- <div>
+                    <i *ngIf="!isLoadingRandomData" class="bi bi-arrow-repeat fs-5 ms-auto ps-2" id="rnd" (click)="generateUser()"></i>
+                    <span *ngIf="isLoadingRandomData" class="spinner-border spinner-border-sm ms-2 mt-2" role="status" aria-hidden="true"></span>
+                </div> -->
+                <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="p-4 ps-3 pe-3 p-sm-5 pt-sm-2 pb-sm-4 ">
+                    <h4 class="fw-normal text-center text-custom-orange pb-4">Registro</h4>
+                    <div class="col-12">
+                        <label class="form-label mb-0"><small class="fw-bold text-muted">Nombre</small></label>
+                        <input type="text" id="firstname" class="form-control form-control-custom-orange" placeholder="Ej. Nombre" formControlName="firstName">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label pt-1 mb-0"><small class="fw-bold text-muted">Apellidos</small></label>
+                        <input type="text" id="lastname" class="form-control form-control-custom-orange" placeholder="Ej. Apellidos" formControlName="lastName">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label pt-1 mb-0"><small class="fw-bold text-muted">Usuario</small></label>
+                        <input type="text" id="username" class="form-control form-control-custom-orange" placeholder="Ej. qwerty123" formControlName="username">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label pt-1 mb-0"><small class="fw-bold text-muted">Correo</small></label>
+                        <input type="text" id="email" class="form-control form-control-custom-orange" placeholder="Ej. example@mail.com" formControlName="email">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label pt-1 mb-0"><small class="fw-bold text-muted">Contraseña</small></label>
+                        <input type="password" id="password" class="form-control form-control-custom-orange" placeholder="Ej. contraseña" formControlName="password">
+                    </div>
+                    <div class="d-grid text-center pt-4">
+                        <button [disabled]="registerForm.invalid" type="submit" class="btn btn-custom-orange  p-2" style="border-radius: 0.5rem !important;">Registrarse</button>
+                    </div>
+                </form>
+                <div class="text-center p-4 pt-3 mt-2 bg-light" style="border-top: 1px solid #c4c4c4; border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem;">
+                    <h5 class="pb-0 mb-0">
+                        <a [routerLink]="['/login']" class="text-custom-orange">Iniciar sesión</a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,22 @@
+<app-loader *ngIf="isLoadingHeader"></app-loader>
+<div *ngIf="!isLoadingHeader" class="bg-white p-4 rounded rounded-2 d-sm-flex border">
+    <div class="align-self-center text-center">
+        <img class="rounded-circle" [src]="currentUser.userImg" width="150" height="150" alt="userimage" id="user_image">
+    </div>
+    <div class="ps-sm-4 pt-2 text-center text-sm-start">
+        <h2>
+            <span>{{currentUser.firstName + ' ' + currentUser.lastName}}</span>
+            <span class="fst-italic fw-light"> ({{currentUser.username}})</span>
+        </h2>
+        <div class="ps-sm-2 d-flex flex-column text-center text-sm-start">
+            <small class=" mb-1">{{ currentUser.email }}</small>
+            <!-- <small class=" mb-1">Reviews made: 10</small> -->
+            <div *ngIf="!viewingOtherProfile">
+                <div class="" >
+                    <small class="">Tienes <span class="bg-warning rounded-3 ps-1 pe-1 fw-bold">{{userCreditBal | currency: 'EUR'}}</span> en COINS</small>
+                </div>
+            </div>
+            <!-- <small th:text="|User since ${#temporals.format(user.registeredOn, 'dd MMMM yyyy')}|" class="my-2">User since 26 February 2021</small> -->
+        </div>
+    </div>
+</div>

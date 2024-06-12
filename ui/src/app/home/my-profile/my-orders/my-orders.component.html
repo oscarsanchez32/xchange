@@ -1,0 +1,32 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<div class="list-group" *ngIf="!isLoading">
+    <li class="list-group-item bg-light">
+        <div class="p-0 text-start d-flex align-items-center">
+            <h4 class="m-0" id="reviews">Pedidos</h4>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="p-2 p-sm-4 pt-2 me-2 me-sm-0 table-responsive">
+            <table class="table table-hover text-nowrap table-sm table-bordered">
+                <thead class="thead light table-dark">
+                    <tr class="text-start text-sm-center">
+                        <th scope="col">Artículo(s)</th>
+                        <th scope="col">Total (EUR)</th>
+                        <th scope="col">Creado el</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders" class="text-start align-middle">
+                        <td>{{ order.orderItems.length }}</td>
+                        <td>{{ order.total | currency: 'EUR' }}</td>    
+                        <td>{{ order.createdAt | date:'dd MMMM yyyy hh:mm a' }}</td>
+                       
+                    </tr>
+                    <tr *ngIf="orders.length === 0" class="text-center">
+                        <td colspan="10">No hay pedidos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </li>
+</div>

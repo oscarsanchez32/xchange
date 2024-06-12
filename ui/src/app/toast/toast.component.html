@@ -1,0 +1,7 @@
+<div class="bs-toast alert p-3 col-12 col-sm-4" [ngClass]="{'alert-danger': type === 'danger', 'alert-info': type === 'info', 'alert-success': type === 'success'}">
+    <div class="d-flex align-items-top">
+        <span class="bi bi-info-circle me-2"></span>
+        {{message}}
+        <button class="ms-auto btn btn-close"></button>
+    </div>
+</div>

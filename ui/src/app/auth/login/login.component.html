@@ -1,0 +1,58 @@
+<div class="bg-custom-orange" id="login-bs">
+
+<!--    <div th:replace="fragments/common :: nav"></div>-->
+
+
+    <div class="container">
+        <div class="pt-2"></div>
+        <div class="py-5 d-sm-flex flex-column justify-content-center align-items-center">
+            <div class="text-center">
+                <!-- <img th:src="@{/logotest2.png}" alt="test" class="mt-0" width="100" height="100" > -->
+                <h3 class="text-white mb-5"><strong>XCHANGE</strong></h3>
+            </div>
+            <div class="bg-white col-xl-4 col-lg-5 col-md-7 col-sm-9" style="box-shadow: 0 0 25px 0 #a0331b; border-radius: 0.5rem;">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" class="p-4 ps-3 pe-3 p-sm-5 pb-sm-4">
+                    <h4 class="fw-normal text-center text-custom-orange pb-5">Inicia Sesión</h4>
+                    <div class="text-center">
+                        <div *ngIf="userLoggedOut" class="alert alert-secondary p-2 border border-secondary rounded rounded-3 text-secondary" style="border-radius: 0.5rem !important;" role="alert">
+                            Te has desconectado
+                        </div>
+                        <div *ngIf="invalidCredentials" class="alert alert-danger p-2 border border-danger rounded rounded-3 text-danger" style="border-radius: 0.5rem !important;" role="alert">
+                            Usuario / contraseña inválida
+                        </div>
+                    </div>
+                    <div>
+                        <label class="form-label pb-0 mb-0"><small class="fw-bold text-muted">Usuario</small></label>
+                        <div class="input-group pb-3">
+                            <span class="input-group-text text-custom-orange"><i class="bi bi-person-circle"></i></span>
+                            <input type="text" id="username" name="username" formControlName="username" class="form-control form-control-custom-orange" placeholder="Nombre de Usuario">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="form-label pb-0 mb-0"><small class="fw-bold text-muted">Contraseña</small></label>
+                        <div class="input-group">
+                            <span class="input-group-text text-custom-orange"><i class="bi bi-key-fill"></i></span>
+                            <input type="password" id="password" name="password" formControlName="password" class="form-control form-control-custom-orange" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="d-grid text-center pt-4">
+                        <button type="submit" class="btn btn-custom-orange  p-2" style="border-radius: 0.5rem !important;" [disabled]="!loginForm.valid || isLoading">
+                            {{isLoading ? 'Logging in' : 'Login'}}
+                            <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span *ngIf="isError" class="bi bi-exclamation-circle" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center p-4 pt-3 mt-2 bg-light" style="border-top: 1px solid #c4c4c4; border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem;">
+                    <h5 class="pb-0 mb-0">
+                        <a routerLink="/register" class="text-custom-orange">Registrarse</a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center pt-5">
+        <div class="text-white">XCHANGE v0.1</div>
+    </div>
+
+</div>

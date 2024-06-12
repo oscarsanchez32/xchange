@@ -1,0 +1,88 @@
+<div class="p-3"></div>
+<app-loader *ngIf="isLoading"></app-loader>
+<div *ngIf="!isLoading" class="bg-white border rounded-2">
+    <div>
+        <h2 class="p-3 pb-0"><i class="bi bi-arrow-left-right me-2"></i>Exchanges</h2>
+        <p class="p-3 pt-0 pb-0 text-muted">Todas las peticiones para hacer Exchange. Clica 'exchange' en el Juego que quieres intercambiar con otro usuario.</p>
+        <hr>
+    </div>
+    <div class="pe-4 d-flex">
+        <a class="btn btn-custom-orange btn-sm ms-auto" (click)="isCreatingNewExchange = true">Nueva petición</a>
+    </div>
+    <div class="p-2 p-sm-4 pt-2 table-responsive">
+        <table class="table table-hover text-nowrap table-bordered">
+            <thead class="thead light table-dark">
+            <tr class="text-start text-sm-center">
+                <th scope="col">Usuario</th>
+                <th scope="col">Tiene</th>
+                <th scope="col">Quiere</th>
+                <th scope="col">Puede intercambiar</th>
+                <th scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let exchange of exchanges" class="text-start">
+                <td>
+                    <a class="text-decoration-none text-dark" [ngClass]="{'fw-bold':exchange.exchangeOpener === currentUser}">
+                        {{ exchange.exchangeOpener }}
+                    </a>
+                </td>
+                <td>
+                    <a class="text-decoration-none text-dark" [routerLink]="['/games', exchange.openerOwnedGameId]">{{ exchange.openerOwnedGameTitle }}</a>
+                </td>
+                <td>
+                    <a class="text-decoration-none text-dark" [routerLink]="['/games', exchange.openerExchangeGameId]">{{ exchange.openerExchangeGameTitle }}</a>
+                </td>
+                <td class="text-center">
+                    <div *ngIf="exchange.canExchange && exchange.exchangeOpener !== currentUser" >
+                        <span class="text-success">
+                            <i class="bi bi-check-lg"></i>
+                        </span>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div *ngIf="exchange.canExchange && exchange.exchangeOpener !== currentUser">
+                        <a class="btn btn-sm btn-outline-success" (click)="processExchange(exchange.id)">Intercambiar</a>
+                    </div>
+                    <div *ngIf="exchange.exchangeOpener === currentUser">
+                        <a class="btn btn-sm btn-outline-danger" (click)="onCancelExchange(exchange.id)">Cancelar</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-modal *ngIf="isCreatingNewExchange" (onClickBackdrop)="onCloseModal()">
+    <div id="modal-heading">
+        <div class="text-center">
+            <h3 class="m-0 p-0">Nuevo intercambio</h3>
+        </div>
+    </div>
+    <div id="modal-body">
+        <div class="">
+            <form [formGroup]="exchangeForm" (ngSubmit)="onSubmit()" id="exchange-form">
+
+                <label class="form-label">Selecciona un juego que te pertenezca: </label>
+                <select class="form-select form-control-custom-orange" formControlName="openerOwnedGameId" aria-label="select game 1">
+                    <option value="null" selected>Ninguno</option>
+                    <option *ngFor="let game of userGames" [ngValue]="game.id">{{ game.title }}</option>
+                </select>
+
+                <label class="form-label pt-4">Selecciona el juego que quieres: </label>
+                <select class="form-select form-control-custom-orange" formControlName="openerExchangeGameId" aria-label="select game 2">
+                    <option value="null" selected>Ninguno</option>
+                    <option *ngFor="let game of allGames" [ngValue]="game.id">{{ game.title }}</option>
+                </select>
+
+            </form>
+        </div>
+    </div>
+    <div id="modal-footer">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-outline-secondary me-2" (click)="onCloseModal()">Cancelar</button>
+            <button type="submit" class="btn btn-custom-orange" form="exchange-form" [disabled]="!exchangeForm.valid">Aceptar</button>
+        </div>
+    </div>
+</app-modal>

@@ -1,0 +1,18 @@
+<div class="backdrop" (click)="onCloseModal()"></div>
+<div class="custom-modal">
+    <div class="border border-1 rounded-2 bg-white">
+        <div class="custom-modal-heading bg-light p-3">
+            <!-- Modal Heading -->
+            <ng-content select="#modal-heading"></ng-content>
+        </div>
+        <div class="custom-modal-body p-4">
+            <!-- Modal body -->
+            <ng-content select="#modal-body"></ng-content>
+        </div>
+        <div class="custom-modal-footer p-3">
+            <!-- Modal footer -->
+            <ng-content select="#modal-footer"></ng-content>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</div>

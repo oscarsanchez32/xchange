@@ -1,0 +1,59 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<section *ngIf="!isLoading" class="p-0 pt-5 p-sm-5 text-center text-md-start">
+    <div class="container" id="cart-container">
+        <ul class="list-group">
+            <li class="list-group-item bg-light">
+                <h4>
+                    <span><i class="bi bi-cart4"></i></span>
+                    <span class="p-0 text-start m-0"> Tu carrito ({{cart.length}})</span>
+                </h4>
+            </li>
+            <li *ngIf="cart.length===0" class="list-group-item bg-light">
+                <div class="p-5 text-center m-0">¡No tienes nada en el carrito!</div>
+            </li>
+            <li *ngFor="let item of cart" class="list-group-item p-2">
+                <div class="d-sm-flex">
+                    <div class="col-sm-2">
+                        <img [src]="item.imgPath" class="img-thumbnail img-responsive me-0 me-sm-3" width="150" height="200">
+                    </div>
+                    <div class="ms-3 d-flex flex-column col-sm-10">
+
+                        <div class="">
+                            <div class="row">
+                                <h5 class="m-0">
+                                    <span>{{item.title}} </span>
+                                    <span class="fst-italic fw-light">by <span>{{ item.developera }}</span></span>
+                                </h5>
+                            </div>
+                            <div class="row">
+                                <p class="m-0 text-break text-muted">
+                                    {{item.shortDesc}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto mb-2 me-4">
+                            <div class="d-sm-flex mt-4">
+                                <small class="ms-auto">Cantidad: 1</small>
+                            </div>
+                            <div class="d-sm-flex mt-1">
+                                <h5 class="p-0 m-0">Precio del artículo: <span>{{item.price | currency: 'EUR'}}</span>
+                                </h5>
+                                <button class="ms-auto btn btn-secondary btn-sm" (click)="onRemoveFromCart(item.id!)">
+                                    <i class="bi bi-cart-x"></i> Quitar del carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div *ngIf="cart.length !== 0" class="ms-3 mt-3 me-3 d-flex justify-content-between">
+            <h4>Total: {{total | currency: 'EUR'}}</h4>
+            <a class="btn btn-primary btn-sm" routerLink="/checkout">Pagar</a>
+        </div>
+        <div class="p-5"></div>
+        <div class="p-5"></div>
+
+    </div>
+</section>

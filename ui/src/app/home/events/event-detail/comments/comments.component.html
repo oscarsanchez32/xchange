@@ -1,0 +1,93 @@
+<!-- <app-loader *ngIf="isLoading && !isError"></app-loader>
+<app-error [message]="'Error loading reviews.'" *ngIf="isError"></app-error>
+<div class="pb-5" [ngClass]="{'pt-3': currentUrl.startsWith('/books')}" *ngIf="!isLoading && !isError">
+    <ul class="list-group">
+        <li class="list-group-item bg-light">
+            <div class="p-0 text-start d-flex align-items-center">
+                <h4 class="m-0" id="reviews">Reviews ({{reviews.length}})</h4>
+                <a class="btn btn-custom-orange  ms-auto" *ngIf="currentUrl.startsWith('/books') && canReview" (click)="isAddingReview = true">+ Add Review</a>
+            </div>
+        </li>
+        <div *ngIf="reviews.length === 0">
+            <li class="list-group-item text-center  p-5">
+                <span class="text-muted">No Reviews Yet!</span>
+            </li>
+        </div>
+        <li *ngFor="let review of reviews" class="list-group-item">
+            <div class="bg-white">
+                <div>
+                    <div class="p-2 d-flex">
+                        <img class="rounded-circle align-self-center" [src]="review.userImg" width="50" height="50" alt="">
+                        <div class="ms-1 row text-start">
+                            <div>
+                                <a [routerLink]="['/user', review.username]" class="text-black text-decoration-none">
+                                    <small>{{review.username}}</small>
+                                </a>
+                            </div>
+                            <small class="text-muted">Reviewed on {{review.timestamp | date:'dd MMMM yyyy'}}</small>
+                            <small *ngIf="currentUrl.startsWith('/user')" class="text-muted">Review for <a [routerLink]="['/books', review.bookId]">{{review.bookTitle}}</a></small>
+                        </div>
+                        <div class="ms-auto">
+                            <a *ngIf="currentUsername === review.username" class="text-danger" title="Delete review" style="cursor: pointer;" (click)="deleteReview(review.reviewId!, review.bookId!)">
+                                <i class="bi bi-x-circle-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ps-3 pb-2 text-start">
+                        <div class="col d-flex">
+                            <small class="d-flex" style="padding: 0px 2px;" *ngFor="let item of [].constructor(review.rating); let i = index" class="text-warning">
+                                <i class="bi bi-star-fill"></i>
+                            </small>
+                            <small class="d-flex" style="padding: 0px 2px;" *ngFor="let item of [].constructor(5-review.rating!); let i = index" class="text-warning">
+                                <i class="bi bi-star"></i>
+                            </small>
+                        </div>
+                        <div>
+                            <h5 class="p-0 m-0">{{review.title}}</h5>
+                        </div>
+                    </div>
+                    <div class="text-start ps-3 text-muted pb-3">
+                        <p>
+                            {{review.content}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<app-modal *ngIf="isAddingReview" (onClickBackdrop)="onCloseReviewModal()">
+    <div id="modal-heading">
+        <div class="text-center">
+            <h3 class="m-0 p-0">Add a review</h3>
+        </div>
+    </div>
+    <div id="modal-body">
+        <form id="review-form" method="post" [formGroup]="reviewForm" (ngSubmit)="onReviewSubmit()">
+            <div class="row g-3">
+                <div class="col-12">
+                    <label class="form-label">Rating</label>
+                    <input type="number" id="review-rating" class="form-control form-control-custom-orange" formControlName="rating" placeholder="Rating ex. 1,2,3,4,5">
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Review Title</label>
+                    <input type="text" id="review-title" class="form-control form-control-custom-orange" formControlName="title" placeholder="Review Title">
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Your Review <small class="text-muted">(max chars: 500)</small></label>
+                    <textarea type="text" maxlength="500" id="review-content" class="form-control form-control-custom-orange" formControlName="content" placeholder="Enter your review here"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="modal-footer">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-custom-orange" form="review-form" type="submit">
+                Submit 
+                <span *ngIf="isSavingReview" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span *ngIf="isErrorSavingReview"><i class="bi bi-exclamation-circle"></i></span>
+            </button>
+            <!-- <span *ngIf="isErrorSavingReview" class="text-danger">Error code {{ errorCode }}</span> -->
+        </div>
+    </div>
+</app-modal> -->

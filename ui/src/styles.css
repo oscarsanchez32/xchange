@@ -1,0 +1,120 @@
+/* You can add global styles to this file, and also import other style files */
+
+.bg-custom-orange {
+    background-color: #487bba!important;
+}
+.bg-custom-blue {
+    background-color: #487bba !important;
+}
+
+.bg-custom-teal {
+    background-color: #40bf77;
+}
+
+.bg-light-custom {
+    background-color: #f5f5f5 !important;
+}
+
+.text-custom-orange {
+    color: #487bba !important;
+}
+
+.btn-custom-orange {
+    background-color: #487bba !important;
+    color: #fff !important;
+}
+.btn-custom-orange:hover {
+    background-color: #487bba !important;
+}
+.btn-custom-orange:focus {
+    box-shadow: 0 0 0 .25rem rgba(219, 43, 2, 0.2) !important;
+    border-color: rgb(21, 135, 177) !important;
+}
+
+.border-custom-orange {
+    border-bottom: 3px solid #487bba;
+}
+
+.border-custom-orange-top {
+    border-top: 3px solid #487bba;
+}
+
+.form-control-custom-orange:focus {
+    box-shadow: 0 0 0 .25rem rgba(219, 43, 2, 0.2) !important;
+    border-color: rgb(177, 48, 21) !important;
+}
+
+.active-custom {
+    background-color: #5aa2be!important;
+    border-color:#5aa2be !important;
+}
+
+#userimage {
+    border-radius: 50%;
+    border: 3px solid #5aa2be;
+}
+
+#expandContractBtn:hover {
+    background-color: #d1d6d3;
+    border-color: #999999 !important;
+    cursor: pointer;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff !important;
+    background-color: #5aa2be !important;
+    border-color: rgb(177, 48, 21) !important;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d !important;
+}
+
+.page-link {
+    color: #5aa2be !important;
+}
+
+.user-badge {
+    border: 1px solid #6c757d;
+    color: #6c757d !important;
+    border-radius: 5px;
+    margin: 2px 2px;
+    padding: 1px 5px;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+}
+
+.user-badge:hover {
+    background-color: #dbdbdb;
+    transition: all 0.2s ease-in;
+}
+
+td {
+    vertical-align: middle;
+}
+
+#rnd {
+    color: #dddddd;
+}
+
+#rnd:hover {
+    color: #a3a3a3;
+}
+
+.table th {
+  text-align: center !important;
+}
+
+
+
+
+
+
+
+
+
+
+

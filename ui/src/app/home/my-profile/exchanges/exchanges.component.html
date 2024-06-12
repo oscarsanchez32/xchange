@@ -1,0 +1,47 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<div class="list-group" *ngIf="!isLoading">
+    <li class="list-group-item bg-light">
+        <div class="p-0 text-start d-flex align-items-center">
+            <h4 class="m-0" id="reviews">Intercambios <small class="text-muted fs-6">(intercambios creados por ti)</small></h4>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="p-2 pt-2 me-2 me-sm-0 table-responsive">
+            <table class="table table-hover text-nowrap table-sm table-bordered">
+                <thead class="thead light table-dark">
+                    <tr class="text-start text-sm-center">
+                        <th scope="col">Juegos que me pertenecen</th>
+                        <th scope="col">Exchange con</th>
+                        <th scope="col">Intercambiado con el usuario:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let exchange of exchanges" class="text-start align-middle">
+                        <td>{{ exchange.openerOwnedGameTitle }}</td>
+                        <td>{{ exchange.openerExchangeGameTitle }}</td>
+                       
+                        <td class="text-center">
+                            <div *ngIf="exchange.exchangeCloser === null">
+                                -
+                            </div>
+                            <div *ngIf="exchange.exchangeCloser !== null">
+                                <div [ngSwitch]="exchange.exchangeCloser" th:switch="${er.exchangeCloser.userName}">
+                                    <div *ngSwitchCase="auth.getCurrentLoggedInUsername()">Closed by you</div>
+                                    <a *ngSwitchDefault class="user-badge">
+                                        <div [routerLink]="['/user', exchange.exchangeCloser]" style="cursor: pointer;" class="d-flex justify-content-center align-items-center">
+                                            <i class="bi bi-person-circle fs-5"></i>
+                                            <span class="ms-1">{{ exchange.exchangeCloser }}</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngIf="exchanges.length === 0" class="text-center">
+                        <td colspan="10">You have not created any exchanges</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </li>
+</div>

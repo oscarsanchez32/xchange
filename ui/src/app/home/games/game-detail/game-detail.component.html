@@ -1,0 +1,77 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<app-game-form *ngIf="isEditing" [game]="game" [editMode]="true" (modalClose)="onCloseModal()"></app-game-form>
+<section class="p-2 pt-3 pb-3 pt-sm-5 p-sm-5 text-center text-md-start" *ngIf="!isLoading">
+  <div class="container">
+    <div class="col-lg-10 mx-auto">
+      <ul class="list-group">
+        <li class="list-group-item bg-light">
+          <div class="p-0 text-start d-flex align-items-center">
+            <h4 class="m-0">Detalles</h4>
+            <a *ngIf="currentUser.roles?.indexOf('ROLE_ADMIN') !== -1" (click)="isEditing = true" class="btn btn-custom-orange ms-auto">Editar</a>
+            <!-- <button *ngIf="currentUser.roles?.indexOf('ROLE_ADMIN') !== -1" (click)="onDeleteGame()" class="btn btn-danger ms-2">Eliminar</button> -->
+          </div>
+        </li>
+        <li class="list-group-item bg-white m-0 p-0">
+          <div class="d-md-flex">
+            <div class="border-end">
+              <img class="m-3" [src]="game.imgPath" width="200" height="300">
+              <div class="mx-3">
+                <div class="col">
+                  <strong>EAN: </strong><span th:text="${game.gameDetail.ean}">{{game.gameDetail.ean}}</span>
+                </div>
+                <div *ngIf="!gameOwned" class="mt-2 d-flex justify-content-center justify-content-md-start">
+                  <span>Comprar nuevo: &nbsp;</span>
+                  <h4>{{game.price | currency: 'EUR'}}</h4>
+                </div>
+                <div class="col mt-2 ">
+                  <a class="btn btn-primary w-100 rounded-pill" (click)="onAddToCart()" *ngIf="!gameOwned">Añadir al Carrito</a>
+                </div>
+                <div class="col mt-1 mb-2">
+                  <a [routerLink]="['/checkout']" [queryParams]="{type: 'instant-checkout', id: game.id}" class="btn btn-warning w-100 rounded-pill" *ngIf="!gameOwned">Comprar ahora</a>
+                </div>
+                <div th:if="${itemOwned}" class="col mt-3 mb-3 text-center">
+                  <span class="text-success" *ngIf="gameOwned"><i class="bi bi-check-lg"></i> Ya tienes este producto</span>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-column justify-content-between">
+              <div>
+                <h3 class="m-3">
+                  <span th:text="${game.title}">{{game.title}} </span>
+                  <span class="fst-italic fw-light">by <span th:text="${game.developera}">{{game.developera}}</span></span>
+                </h3>
+                <div class="col m-3 text-start">
+                  <p style="white-space: pre-line;">
+                    {{ game.gameDetail.longDesc }}
+                  </p>
+                </div>
+              </div>
+              <div class="">
+                <h4 class="col m-3 ">Detalles del Juego</h4>
+                <div class="col m-3 text-start">
+                  <ul>
+                    <li class="py-1">
+                      <strong>Editor: </strong> <span>{{game.gameDetail.publisher}}</span>
+                    </li>
+                    <li class="py-1">
+                      <strong>Idioma: </strong> <span>Cordobés, Español</span>
+                    </li>
+                    <li class="py-1">
+                      <strong>Tags:</strong>
+                      <span>
+                        <span *ngFor="let tag of game?.tags?.split(',')" class="badge bg-custom-orange rounded-pill m-1">
+                          <a class="text-decoration-none text-white" href="">{{ game.tags }}</a>
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <app-reviews></app-reviews>
+    </div>
+  </div>
+</section>

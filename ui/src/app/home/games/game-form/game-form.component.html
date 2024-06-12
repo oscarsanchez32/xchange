@@ -1,0 +1,73 @@
+<div class="backdrop" (click)="onCloseModal()"></div>
+<div class="modal-form">
+    <div class="border border-1 rounded-2 bg-white">
+        <div class="modal-heading bg-light">
+            <div class="d-flex justify-content-between align-items-between p-3">
+                <button (click)="onCloseModal()" class="btn btn-close"></button>
+                <h3 class="m-0 p-0">{{editMode ? 'Editar Juego' : 'Añadir Juego'}}</h3>
+                <!-- <div>
+                    <i *ngIf="!isLoading" class="bi bi-arrow-repeat fs-5" id="rnd" (click)="fetchRandomGame()"></i>
+                    <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                </div> -->
+            </div>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="gameForm" (ngSubmit)="onSubmit()" id="game-form" class="p-3 p-sm-5 pt-2">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Título</label>
+                        <input type="text" id="title" class="form-control form-control-custom-orange" placeholder="Título" name="title" formControlName="title">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Desarrolladora</label>
+                        <input type="text" id="developera" class="form-control form-control-custom-orange" placeholder="Desarrolladora" formControlName="developera">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Precio</label>
+                        <input type="number" step="any" id="price" class="form-control form-control-custom-orange" placeholder="Precio" formControlName="price">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Descripción breve <small class="text-muted">(max chars: 250)</small></label>
+                        <textarea type="text" maxlength="255" id="desc" class="form-control form-control-custom-orange" placeholder="Breve despcripción sobre el juego" formControlName="shortDesc"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Etiquetas <small class="text-muted">(separado por comas)</small></label>
+                        <input type="text" id="tags" name="tags" formControlName="tags" class="form-control form-control-custom-orange" placeholder="Ej. tag1,tag2,tag3">
+                    </div>
+                    <div formGroupName="gameDetail">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">EAN</label>
+                                <input type="text"  id="ean" class="form-control form-control-custom-orange" placeholder="EAN" formControlName="ean">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Idioma</label>
+                                <input type="text"  id="language" class="form-control form-control-custom-orange" placeholder="Idioma" formControlName="language">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Editor</label>
+                                <input type="text"  id="publisher" class="form-control form-control-custom-orange" placeholder="Editor" formControlName="publisher">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Descripción detallada <small class="text-muted">(max chars: 2048)</small></label>
+                                <textarea type="text" maxlength="2048" id="longdesc" class="form-control form-control-custom-orange" placeholder="Descripción larga sobre el juego" formControlName="longDesc"></textarea>
+                            </div>
+                        </div>
+                     
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">URL de la imagen</label>
+                        <input type="text"  id="img" class="form-control form-control-custom-orange" placeholder="Ej. https://www.example.com/img.png" formControlName="imgPath">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer d-flex justify-content-end">
+            <button form="game-form" type="submit" class="btn btn-primary" [disabled]="!gameForm.valid || isSaving">
+                Guardar
+                <span *ngIf="isSaving" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            </button>
+            <button class="btn btn-secondary ms-1" (click)="onReset()">Reset</button>
+        </div>
+    </div>
+</div>

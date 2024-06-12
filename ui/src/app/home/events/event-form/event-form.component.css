@@ -1,0 +1,34 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.modal-form {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 80%;
+    max-width: 40rem;
+    border-radius: 2rem;
+}
+
+.modal-body {
+    height: 25rem;
+    overflow-y: scroll;
+}
+
+.modal-heading {
+    border-bottom: 1px rgb(202, 202, 202) solid;
+}
+
+.modal-footer {
+    padding: 10px;
+    border-top: 1px rgb(202, 202, 202) solid;
+}

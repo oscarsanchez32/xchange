@@ -1,0 +1,33 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<ul *ngIf="!isLoading" class="list-group">
+    <li class="list-group-item bg-light">
+        <div class="p-0 text-start d-flex align-items-center">
+            <h4 class="m-0" id="reviews">Juegos que me pertenecen:</h4>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="p-2 p-sm-4 pt-0 pt-sm-2 me-2 me-sm-0 table-responsive">
+            <table class="table table-hover text-nowrap table-sm table-bordered">
+                <thead class="thead light table-dark">
+                <tr class="text-start text-sm-center">
+                    <th scope="col">Título</th>
+                    <th scope="col">Desarrolladora</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let game of ownedGames" class="text-start align-middle">
+                    <td>{{ game.title }}</td>
+                    <td>{{ game.developera }}</td>
+                    <td class="text-center">
+                        <a [routerLink]="['/games', game.id]" class="bi bi-search text-secondary fs-5 mx-2" title="View game"></a>
+                    </td>
+                </tr>
+                <tr *ngIf="ownedGames.length === 0" class="text-center">
+                    <td colspan="3">No tienes ningún juego</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </li>
+</ul>

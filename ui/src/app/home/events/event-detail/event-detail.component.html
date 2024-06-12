@@ -1,0 +1,82 @@
+<!-- <app-loader *ngIf="isLoading"></app-loader>
+<app-book-form *ngIf="isEditing" [book]="book" [editMode]="true" (modalClose)="onCloseModal()"></app-book-form>
+<section class="p-2 pt-3 pb-3 pt-sm-5 p-sm-5 text-center text-md-start" *ngIf="!isLoading">
+    <div class="container">
+        <div class="col-lg-10 mx-auto">
+   
+            <ul class="list-group">
+                <li class="list-group-item bg-light">
+                    <div class="p-0 text-start d-flex align-items-center">
+                        <h4 class="m-0">Book details</h4>
+                        <a *ngIf="currentUser.roles?.indexOf('ROLE_ADMIN') !== -1" (click)="isEditing = true" class="btn btn-custom-orange  ms-auto">Edit</a>
+                    </div>
+                </li>
+                <li class="list-group-item bg-white m-0 p-0">
+                    <div class="d-md-flex">
+                        <div class="border-end">
+                            <img class="m-3" [src]="book.imgPath" width="200" height="300">
+                            <div class="mx-3">
+                                <div class="col">
+                                    <strong>ISBN: </strong><span th:text="${book.bookDetail.isbn}">{{book.bookDetail.isbn}}</span>
+                                </div>
+                                <div *ngIf="!bookOwned" class="mt-2 d-flex justify-content-center justify-content-md-start">
+                                    <span>Buy new: &nbsp;</span>
+                                    <h4>{{book.price | currency}}</h4>
+                                </div>
+                                <div class="col mt-2 ">
+                                    <a class="btn btn-primary w-100 rounded-pill" (click)="onAddToCart()" *ngIf="!bookOwned">Add to Cart</a>
+                                </div>
+                                <div class="col mt-1 mb-2">
+                                    <a [routerLink]="['/checkout']" [queryParams]="{type: 'instant-checkout', id: book.id}" class="btn btn-warning w-100 rounded-pill" *ngIf="!bookOwned">Buy now</a>
+                                </div>
+                                <div th:if="${itemOwned}" class="col mt-3 mb-3 text-center">
+                                    <span class="text-success" *ngIf="bookOwned"><i class="bi bi-check-lg"></i> You own this product</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-between">
+                            <div>
+                                <h3 class="m-3">
+                                    <span th:text="${book.title}">{{book.title}} </span>
+                                    <span class="fst-italic fw-light">by <span th:text="${book.author}">{{book.author}}</span></span>
+                                </h3>
+
+                                <div class="col m-3 text-start">
+                                    <p style="white-space: pre-line;">
+                                        {{ book.bookDetail.longDesc }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <h4 class="col m-3 ">Book Details</h4>
+                                <div class="col m-3 text-start">
+
+
+                                    <ul>
+                                        <li class="py-1">
+                                            <strong>Publisher: </strong> <span>{{book.bookDetail.publisher}}</span>
+                                        </li>
+                                        <li class="py-1">
+                                            <strong>Language: </strong> <span>English</span>
+                                        </li>
+                                        <li class="py-1">
+                                            <strong>Tags:</strong>
+                                            <span>
+                                                <span *ngFor="let tag of book?.tags?.split(',')" class="badge bg-custom-orange rounded-pill m-1">
+                                                    <a class="text-decoration-none text-white" href="">{{ tag }}</a>
+                                                </span>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <app-reviews></app-reviews>
+        </div>
+    </div>
+</section> -->
