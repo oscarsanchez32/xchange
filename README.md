@@ -1,4 +1,5 @@
 XCHANGE
+
 XCHANGE es una plataforma web para comprar e intercambiar juegos, creada con Spring Boot y Angular.
 
 Pasos para Iniciar la Aplicación
